@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class ArrayList<T> {
 
@@ -30,20 +31,24 @@ public class ArrayList<T> {
     }//end preferred constructor
   
   	public boolean addItem (T item) { 
-  		if(arList.length < length) {
-  			return true;
-  			}//end if
-  		else {
+  		if(currentItem >= length) {
+  			System.out.println("Could not add item. Not enough space in list.");
   			return false;
-  			}//end else
-  		if(true) {
-  			arList[arList.length++]=item;
-  			System.out.println("Added item to the list");
   		}//end if
   		else {
-  			System.out.println("Could not add item. Not enough space in list.");
+  			arList[currentItem] = item; //adds the item to the array.
+  			currentItem++; //increments the counter
+  			System.out.println("Added item to the list.");
+  			return true;
   		}//end else
 	  
   	}//end addItem
+
+  	//toString
+	@Override
+	public String toString() {
+		return "ArrayList [DEFAULT_SIZE=" + DEFAULT_SIZE + ", currentItem=" + currentItem + ", arList="
+				+ Arrays.toString(arList) + ", length=" + length + "]";
+	}//end toString
 	
 }//end class
